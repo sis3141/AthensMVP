@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIManager
 {
     //스택
-    Stack<Canvas> PopupStack = new Stack<Canvas>();
+    Stack<Canvas> _popup_stack = new Stack<Canvas>();
     int _sort_order = 0;
 
     public enum UIType
@@ -18,49 +18,48 @@ public class UIManager
     //로드
     public GameObject LoadUI(string path)
     {
-        GameObject _go = Managers.resource.Load<GameObject>(path);
-        return _go;
+        GameObject go = Managers.resource.Load<GameObject>(path);
+        return go;
     }
     //열기
     public Canvas OpenNewUI(string path, UIType type)
     {
-        Canvas _canvas = Managers.resource.Instantiate<Canvas>(path);
+        Canvas canvas = Managers.resource.Instantiate<Canvas>(path);
         if(type == UIType.Popup)
         {
             _sort_order++;
-            _canvas.sortingOrder = _sort_order;
+            canvas.sortingOrder = _sort_order;
         }
-        return _canvas;
+        return canvas;
     }
     //닫기
-    public bool CloseUI(Canvas _canvas,bool forced = false)
+    public bool CloseUI(Canvas canvas,bool forced = false)
     {
-        if(_canvas == null)
+        if(canvas == null)
         {
             Debug.Log("No such UI!");
             return false;
         }
-        if(_canvas.sortingOrder < _sort_order)
+        if(canvas.sortingOrder < _sort_order)
         {
             Debug.Log("Wrong order!");
             return false;
         }
-        Managers.resource.Destroy(_canvas);
+        Managers.resource.Destroy(canvas);
         _sort_order--;
         return true;
     }
 
-    public void ToggleRayCast(Graphic _graphic, bool _active)
+    public void ToggleRayCast(Graphic graphic, bool active)
     {
-        
-        if(_graphic == null) 
+        if(graphic == null) 
         {   
             Debug.Log("No UI element");
             return;
         }
-        string name = _graphic.ToString();
-        _graphic.raycastTarget = _active;
-        Debug.Log($"raycast of {name} set {_active}");
+        string name = graphic.ToString();
+        graphic.raycastTarget = active;
+        Debug.Log($"raycast of {name} set {active}");
     }
 
 

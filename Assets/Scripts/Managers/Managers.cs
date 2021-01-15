@@ -33,14 +33,14 @@ public class Managers : MonoBehaviour
     {
         if(_managers == null)   //매니저 중복호출 방지
         {
-            GameObject _go  = GameObject.Find("@Managers"); //Find함수 비싸지만 최초 이후 안쓰이니 ㄱㅊ
-            if(_go == null)
+            GameObject go  = GameObject.Find("@Managers"); //Find함수 비싸지만 최초 이후 안쓰이니 ㄱㅊ
+            if(go == null)
             {
-                _go = new GameObject {name = "@Managers"};
-                _go.AddComponent<Managers>();
+                go = new GameObject {name = "@Managers"};
+                go.AddComponent<Managers>();
             }
-            DontDestroyOnLoad(_go);
-            _managers = _go.GetComponent<Managers>();
+            DontDestroyOnLoad(go);
+            _managers = go.GetComponent<Managers>();
             Debug.Log("Managers on load!");
             //_managers._input.Init();
             //산하 매니저 초기화

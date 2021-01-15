@@ -9,33 +9,33 @@ public class EventHandlers : MonoBehaviour, IPointerClickHandler, IPointerDownHa
     public Action<PointerEventData> OnClickHandler = null;
     public Action<PointerEventData> OnDragHandler = null;
     public Action<PointerEventData> OnDownHandler = null;
-    public int NumOfFinger = 1;
-    public void OnDrag(PointerEventData eventData)
+    public int _max_finger_id = 1;
+    public void OnDrag(PointerEventData evt)
     {
         if(OnDragHandler != null)
-            if(eventData.pointerId < NumOfFinger)
-                OnDragHandler.Invoke(eventData);
+            if(evt.pointerId < _max_finger_id)
+                OnDragHandler.Invoke(evt);
     }
 
-    public void OnDrop(PointerEventData eventData)
+    public void OnDrop(PointerEventData evt)
     {
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData evt)
     {
         if(OnClickHandler != null)
-            if(eventData.pointerId < NumOfFinger)
-                OnClickHandler.Invoke(eventData);
+            if(evt.pointerId < _max_finger_id)
+                OnClickHandler.Invoke(evt);
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData evt)
     {
         if(OnDownHandler != null)
-            if(eventData.pointerId < NumOfFinger)
-                OnDownHandler.Invoke(eventData);
+            if(evt.pointerId < _max_finger_id)
+                OnDownHandler.Invoke(evt);
     }
 
-    public void OnPointerUp(PointerEventData eventData)
+    public void OnPointerUp(PointerEventData evt)
     {
     }
 }

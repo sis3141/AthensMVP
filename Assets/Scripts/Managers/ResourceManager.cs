@@ -11,32 +11,32 @@ public class ResourceManager
 
     public T Instantiate<T>(string path, Transform parent = null) where T : Object
     {
-        T _original = Load<T>(path);
-        if (_original == null)
+        T original = Load<T>(path);
+        if (original == null)
         {
             Debug.Log($"Failed to Load : {path}");
             return null;
         }
 
         //기존 유니티 함수
-        T _copy = Object.Instantiate(_original,parent);
+        T copy = Object.Instantiate(original,parent);
         //기존옵젝에서 복사해서 생성하기때문에 이름뒤에 복사됬다는게 붙어서 이름정리용
-        _copy.name = _original.name;
+        copy.name = original.name;
 
-        return _copy;
+        return copy;
     }
 
-    public void Destroy(GameObject _go)
+    public void Destroy(GameObject go)
     {
-        if(_go == null)
+        if(go == null)
             return;
         //풀링 사용을 대비해서 만든 커스텀함수
         
-        Object.Destroy(_go);
+        Object.Destroy(go);
     }
-    public void Destroy(Component _component)
+    public void Destroy(Component component)
     {
-        GameObject _go = _component.gameObject;
-        Destroy(_go);
+        GameObject go = component.gameObject;
+        Destroy(go);
     }
 }

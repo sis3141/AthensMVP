@@ -8,7 +8,7 @@ public class LobbyScene : BaseScene
     {
         base.Init();
         Debug.Log("Lobby loaded");
-        SceneType = Define.Scene.Lobby;
+        _scene_type = Define.Scene.Lobby;
         Toggle3DRaycast(true);
     }
     public override void Clear()

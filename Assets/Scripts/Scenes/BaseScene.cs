@@ -6,8 +6,8 @@ using UnityEngine.EventSystems;
 public abstract class BaseScene : MonoBehaviour
 {
     //
-    //SceneType, Init, Clear()
-    public Define.Scene SceneType {get; protected set;} = Define.Scene.Unknown;
+    //_scene_type, Init, Clear()
+    public Define.Scene _scene_type {get; protected set;} = Define.Scene.Unknown;
     public GameObject _main_camera;
     public Behaviour _3d_raycaster;
     void Awake()

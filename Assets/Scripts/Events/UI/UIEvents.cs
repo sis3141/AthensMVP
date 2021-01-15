@@ -9,17 +9,17 @@ public abstract class UIEvents : MonoBehaviour
     public abstract void Start();
     public void Close(PointerEventData evt)
     {
-        Canvas _canvas = gameObject.GetComponent<Canvas>();
-        string name = _canvas.ToString();
-        Managers.ui.CloseUI(_canvas);
+        Canvas canvas = gameObject.GetComponent<Canvas>();
+        string name = canvas.ToString();
+        Managers.ui.CloseUI(canvas);
         Debug.Log($"UI {name} closed!");
     }
 
     public void OnDrag(PointerEventData evt)
     {
-        Image _Image = this.GetComponentInChildren<Image>();
-        string name = _Image.ToString();
-        _Image.transform.position = evt.position;
+        Image image = this.GetComponentInChildren<Image>();
+        string name = image.ToString();
+        image.transform.position = evt.position;
         Debug.Log($"UI {name} is moving! finger ID : {evt.pointerId}");
     }
 

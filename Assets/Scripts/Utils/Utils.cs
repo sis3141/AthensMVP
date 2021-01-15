@@ -6,22 +6,22 @@ using UnityEngine.EventSystems;
 
 public class Utils
 {
-    public static T GetOrAddComponent<T>(GameObject _go) where T : UnityEngine.Component
+    public static T GetOrAddComponent<T>(GameObject go) where T : UnityEngine.Component
     {
-        T component = _go.GetComponent<T>();
+        T component = go.GetComponent<T>();
         if (component == null)
-            component = _go.AddComponent<T>();
+            component = go.AddComponent<T>();
         return component;
     }
-    public static T GetOrAddComponent<T>(Component _component) where T : UnityEngine.Component
+    public static T GetOrAddComponent<T>(Component component) where T : UnityEngine.Component
     {
-        GameObject _go = _component.gameObject;
-        return GetOrAddComponent<T>(_go);
+        GameObject go = component.gameObject;
+        return GetOrAddComponent<T>(go);
     }
 
-    public static void BindTouchEvent(GameObject _go, Action<PointerEventData> action, Define.TouchEvent type = Define.TouchEvent.Tap)
+    public static void BindTouchEvent(GameObject go, Action<PointerEventData> action, Define.TouchEvent type = Define.TouchEvent.Tap)
     {
-        EventHandlers evt = GetOrAddComponent<EventHandlers>(_go);
+        EventHandlers evt = GetOrAddComponent<EventHandlers>(go);
 
         switch(type)
         {
@@ -39,8 +39,8 @@ public class Utils
                 break;
         }
     }
-
-    // public static void BindObjectEvent(GameObject _go, Action<)
+    
+    // public static void BindObjectEvent(GameObject go, Action<)
     
 
     

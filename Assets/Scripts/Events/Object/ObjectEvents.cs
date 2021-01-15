@@ -9,7 +9,7 @@ public abstract class ObjectEvents : MonoBehaviour
     // public Action<PointerEventData> ObjectInteractionHandler = null;
     
     [SerializeField]
-    public float _speed = 10.0f;
+    //public float _speed = 10.0f;
     public abstract void Start();
     // public void BindObjectEvent(Action<PointerEventData> action)
     // {
