@@ -12,7 +12,6 @@ public class LoginScene : BaseScene     //SceneType, Init(), Clear()
         SceneType = Define.Scene.Login;
         Debug.Log("Login Scene Loaded!");
        // mytest.Delay(2.0f);
-        Managers.scene.LoadScene(Define.Scene.Temp);
     }
     public override void Clear()
     {

@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{636efab3-02f1-35aa-6dd1-b1fde7527f3e}</ProjectGuid>
+    <ProjectGuid>{44dc366d-11c1-0256-c56e-d736e87c264c}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -36,7 +36,11 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Data\Define.cs" />
+     <Compile Include="Assets\Scripts\Events\General\GeneralEvents.cs" />
+     <Compile Include="Assets\Scripts\Events\General\MoveScene.cs" />
+     <Compile Include="Assets\Scripts\Events\General\QuitGame.cs" />
      <Compile Include="Assets\Scripts\Events\Object\DestroyObject.cs" />
      <Compile Include="Assets\Scripts\Events\Object\ObjectEvents.cs" />
      <Compile Include="Assets\Scripts\Events\UI\CloseUI.cs" />
@@ -47,6 +51,8 @@
      <Compile Include="Assets\Scripts\Managers\SceneManager.cs" />
      <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
      <Compile Include="Assets\Scripts\Scenes\BaseScene.cs" />
+     <Compile Include="Assets\Scripts\Scenes\BuildBlocksScene.cs" />
+     <Compile Include="Assets\Scripts\Scenes\LobbyScene.cs" />
      <Compile Include="Assets\Scripts\Scenes\LoginScene.cs" />
      <Compile Include="Assets\Scripts\Scenes\TempScene.cs" />
      <Compile Include="Assets\Scripts\Trash\InputManager.cs" />
@@ -241,7 +247,7 @@
         <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.17f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-        <HintPath>C:/Users/sis31/Desktop/Projects/Test/unity/MVP/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
+        <HintPath>C:/Users/sis31/Desktop/Projects/AthensMVP/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.17f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -589,37 +595,37 @@
         <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.17f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-        <HintPath>C:/Users/sis31/Desktop/Projects/Test/unity/MVP/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+        <HintPath>C:/Users/sis31/Desktop/Projects/AthensMVP/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-        <HintPath>C:/Users/sis31/Desktop/Projects/Test/unity/MVP/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+        <HintPath>C:/Users/sis31/Desktop/Projects/AthensMVP/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-        <HintPath>C:/Users/sis31/Desktop/Projects/Test/unity/MVP/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-        <HintPath>C:/Users/sis31/Desktop/Projects/Test/unity/MVP/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-        <HintPath>C:/Users/sis31/Desktop/Projects/Test/unity/MVP/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.CollabProxy.Editor">
-        <HintPath>C:/Users/sis31/Desktop/Projects/Test/unity/MVP/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-        <HintPath>C:/Users/sis31/Desktop/Projects/Test/unity/MVP/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-        <HintPath>C:/Users/sis31/Desktop/Projects/Test/unity/MVP/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-        <HintPath>C:/Users/sis31/Desktop/Projects/Test/unity/MVP/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+        <HintPath>C:/Users/sis31/Desktop/Projects/AthensMVP/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.DeviceSimulator.Tests.Common">
-        <HintPath>C:/Users/sis31/Desktop/Projects/Test/unity/MVP/Library/ScriptAssemblies/Unity.DeviceSimulator.Tests.Common.dll</HintPath>
+        <HintPath>C:/Users/sis31/Desktop/Projects/AthensMVP/Library/ScriptAssemblies/Unity.DeviceSimulator.Tests.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+        <HintPath>C:/Users/sis31/Desktop/Projects/AthensMVP/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+        <HintPath>C:/Users/sis31/Desktop/Projects/AthensMVP/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.CollabProxy.Editor">
+        <HintPath>C:/Users/sis31/Desktop/Projects/AthensMVP/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+        <HintPath>C:/Users/sis31/Desktop/Projects/AthensMVP/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.DeviceSimulator.Editor">
-        <HintPath>C:/Users/sis31/Desktop/Projects/Test/unity/MVP/Library/ScriptAssemblies/Unity.DeviceSimulator.Editor.dll</HintPath>
+        <HintPath>C:/Users/sis31/Desktop/Projects/AthensMVP/Library/ScriptAssemblies/Unity.DeviceSimulator.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+        <HintPath>C:/Users/sis31/Desktop/Projects/AthensMVP/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+        <HintPath>C:/Users/sis31/Desktop/Projects/AthensMVP/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

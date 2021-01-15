@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyObject : MonoBehaviour
+public class DestroyObject : ObjectEvents
 {
-    void Start()
+    public override void Start()
     {
-        
+        Utils.BindTouchEvent(gameObject,Destroy);
     }
 
-    void Update()
-    {
-        
-    }
 }

@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class CloseUI : UIEvents
 {
-    CloseUI temp = new CloseUI();
-    void Start()
+    public override void Start()
     {
-        Utils.BindTouchEvent(this.gameObject,Close);
+        Utils.BindTouchEvent(gameObject,Close);
     }
 }

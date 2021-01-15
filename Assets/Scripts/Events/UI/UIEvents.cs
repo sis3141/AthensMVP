@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UIEvents : MonoBehaviour
+public abstract class UIEvents : MonoBehaviour
 {
+    public abstract void Start();
     public void Close(PointerEventData evt)
     {
-        Canvas _canvas = evt.selectedObject.GetComponent<Canvas>();
+        Canvas _canvas = gameObject.GetComponent<Canvas>();
         string name = _canvas.ToString();
         Managers.ui.CloseUI(_canvas);
         Debug.Log($"UI {name} closed!");
@@ -21,6 +22,8 @@ public class UIEvents : MonoBehaviour
         _Image.transform.position = evt.position;
         Debug.Log($"UI {name} is moving! finger ID : {evt.pointerId}");
     }
+
+    
 
  
 }

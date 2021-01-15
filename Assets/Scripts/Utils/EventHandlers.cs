@@ -8,6 +8,7 @@ public class EventHandlers : MonoBehaviour, IPointerClickHandler, IPointerDownHa
 {
     public Action<PointerEventData> OnClickHandler = null;
     public Action<PointerEventData> OnDragHandler = null;
+    public Action<PointerEventData> OnDownHandler = null;
     public int NumOfFinger = 1;
     public void OnDrag(PointerEventData eventData)
     {
@@ -29,6 +30,9 @@ public class EventHandlers : MonoBehaviour, IPointerClickHandler, IPointerDownHa
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if(OnDownHandler != null)
+            if(eventData.pointerId < NumOfFinger)
+                OnDownHandler.Invoke(eventData);
     }
 
     public void OnPointerUp(PointerEventData eventData)

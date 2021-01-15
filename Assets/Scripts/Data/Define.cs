@@ -9,6 +9,8 @@ public class Define
     {
         Unknown,
         Login,
+        Lobby,
+        BuildBlocks,
         Temp,
     }
     public enum TouchEvent
@@ -16,5 +18,6 @@ public class Define
         Tap,
         Drag,
         DoubleTap,
+        Down,
     }
 }

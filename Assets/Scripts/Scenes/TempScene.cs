@@ -15,7 +15,7 @@ public class TempScene : BaseScene
             Canvas temp = Managers.ui.OpenNewUI($"UI/TestCan{i}",UIManager.UIType.Popup);
             string name = temp.ToString();
             int sort_order = temp.sortingOrder;
-            Utils.GetOrAddComponent<Button>(temp);
+            Utils.GetOrAddComponent<CloseUI>(temp);
             Debug.Log($"sort order of {name} is {sort_order}");
             
         }
@@ -24,16 +24,6 @@ public class TempScene : BaseScene
 
         
     }
-
-    public void Timer()
-    {
-        GameObject timer = new GameObject();
-        Destroy(timer, 0.5f);
-    }
-
-
-
-    
     public override void Clear()
     {
 

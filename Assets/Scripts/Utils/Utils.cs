@@ -33,8 +33,15 @@ public class Utils
                 evt.OnDragHandler -= action;
                 evt.OnDragHandler += action;
                 break;
+            case Define.TouchEvent.Down:
+                evt.OnDownHandler -=action;
+                evt.OnDownHandler +=action;
+                break;
         }
     }
+
+    // public static void BindObjectEvent(GameObject _go, Action<)
+    
 
     
  
