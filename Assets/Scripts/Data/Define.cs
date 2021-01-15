@@ -20,4 +20,9 @@ public class Define
         DoubleTap,
         Down,
     }
+
+    public enum CameraMode
+    {
+        QuarterView,
+    }
 }
