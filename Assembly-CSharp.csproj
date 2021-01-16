@@ -44,15 +44,14 @@
      <Compile Include="Assets\Scripts\Events\General\QuitGame.cs" />
      <Compile Include="Assets\Scripts\Events\Object\DestroyObject.cs" />
      <Compile Include="Assets\Scripts\Events\Object\ObjectEvents.cs" />
+     <Compile Include="Assets\Scripts\Events\Trigger\TriggerMoveScene.cs" />
      <Compile Include="Assets\Scripts\Events\UI\CloseUI.cs" />
      <Compile Include="Assets\Scripts\Events\UI\UIEvents.cs" />
-     <Compile Include="Assets\Scripts\Managers\DataManager.cs" />
      <Compile Include="Assets\Scripts\Managers\Managers.cs" />
      <Compile Include="Assets\Scripts\Managers\ResourceManager.cs" />
      <Compile Include="Assets\Scripts\Managers\SceneManager.cs" />
      <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
      <Compile Include="Assets\Scripts\Scenes\BaseScene.cs" />
-     <Compile Include="Assets\Scripts\Scenes\BuildBlocksScene.cs" />
      <Compile Include="Assets\Scripts\Scenes\LobbyScene.cs" />
      <Compile Include="Assets\Scripts\Scenes\LoginScene.cs" />
      <Compile Include="Assets\Scripts\Scenes\TempScene.cs" />

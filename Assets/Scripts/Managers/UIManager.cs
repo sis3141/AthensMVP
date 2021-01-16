@@ -14,7 +14,6 @@ public class UIManager
         Popup,
         Scene,
     }
-
     //로드
     public GameObject LoadUI(string path)
     {

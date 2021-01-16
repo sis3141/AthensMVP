@@ -10,8 +10,7 @@ public class PlayerController : MonoBehaviour
     public RaycastHit _hit;
 	public float _speed = 5.0f;
     Animator _animator;
-
-    
+ 
     void Start()
     {
 		// BindObjectEvent(ReceiveEventData);

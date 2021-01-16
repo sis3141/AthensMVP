@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Lobby.unity
     guid: 8028a13243863804b8990e49172d61fc
   - enabled: 0
-    path: Assets/Scenes/BuildBlocks.unity
+    path: Assets/Scenes/BlockZone.unity
     guid: b361d3f5df7ea584ba3b4da9da67f327
   - enabled: 0
     path: Assets/Scenes/Temp.unity

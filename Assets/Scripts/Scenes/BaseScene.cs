@@ -22,7 +22,6 @@ public abstract class BaseScene : MonoBehaviour
         _3d_raycaster.enabled = false;
     }
 
-
     public abstract void Clear();
 
     public void Toggle3DRaycast(bool toggle)

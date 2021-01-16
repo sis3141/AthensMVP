@@ -47,7 +47,6 @@ public class Managers : MonoBehaviour
         }
     }
 
-
     public static void Clear()
     {
         //산하매니저 삭제

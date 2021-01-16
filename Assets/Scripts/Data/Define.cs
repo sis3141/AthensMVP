@@ -10,7 +10,9 @@ public class Define
         Unknown,
         Login,
         Lobby,
-        BuildBlocks,
+        Library,
+        Shop,
+        BlockZone,
         Temp,
     }
     public enum TouchEvent
