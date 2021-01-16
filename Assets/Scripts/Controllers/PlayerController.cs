@@ -44,10 +44,10 @@ public class PlayerController : MonoBehaviour
         // if(_dir.magnitude < 0.0001f)
         //     _animator.SetFloat("speed",0);
         _dir = _destpos - transform.position;
-        if(_dir.magnitude > 0.01f)
+        if(_dir.magnitude > 0.1f)
         {
             float moveDist = Mathf.Clamp(_speed * Time.deltaTime, 0, _dir.magnitude);
-            Debug.Log($"Movedist : {moveDist}");
+            Debug.Log($"Moveto : {_destpos}");
             transform.position += _dir.normalized * moveDist;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_dir),10 * Time.deltaTime);
         }
