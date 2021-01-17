@@ -1,0 +1,177 @@
+fileFormatVersion: 2
+guid: 3fa2260be1ea857429b07102c9f508c2
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: BigAtelier
+    100002: //RootNode
+    100004: Cylinder01
+    100006: Cylinder02
+    100008: Object01
+    100010: Object02
+    100012: Object11
+    100014: Object13
+    100016: Object14
+    100018: Object15
+    100020: Object16
+    100022: Object17
+    100024: Object18
+    100026: Object19
+    100028: Object20
+    100030: Object21
+    100032: Object22
+    100034: Object23
+    100036: Object24
+    400000: //RootNode
+    400002: BigAtelier
+    400004: Cylinder01
+    400006: Cylinder02
+    400008: Object01
+    400010: Object02
+    400012: Object11
+    400014: Object13
+    400016: Object14
+    400018: Object15
+    400020: Object16
+    400022: Object17
+    400024: Object18
+    400026: Object19
+    400028: Object20
+    400030: Object21
+    400032: Object22
+    400034: Object23
+    400036: Object24
+    2100000: 1
+    2100002: 01 - Default
+    2300000: Cylinder01
+    2300002: Cylinder02
+    2300004: Object01
+    2300006: Object02
+    2300008: Object11
+    2300010: Object13
+    2300012: Object14
+    2300014: Object15
+    2300016: Object16
+    2300018: Object17
+    2300020: Object18
+    2300022: Object19
+    2300024: Object20
+    2300026: Object21
+    2300028: Object22
+    2300030: Object23
+    2300032: Object24
+    3300000: Cylinder01
+    3300002: Cylinder02
+    3300004: Object01
+    3300006: Object02
+    3300008: Object11
+    3300010: Object13
+    3300012: Object14
+    3300014: Object15
+    3300016: Object16
+    3300018: Object17
+    3300020: Object18
+    3300022: Object19
+    3300024: Object20
+    3300026: Object21
+    3300028: Object22
+    3300030: Object23
+    3300032: Object24
+    4300000: Object01
+    4300002: Cylinder01
+    4300004: Cylinder02
+    4300006: Object11
+    4300008: Object13
+    4300010: Object14
+    4300012: Object15
+    4300014: Object16
+    4300016: Object17
+    4300018: Object18
+    4300020: Object19
+    4300022: Object20
+    4300024: Object21
+    4300026: Object22
+    4300028: Object23
+    4300030: Object24
+    4300032: Object02
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
