@@ -1,0 +1,9 @@
+{
+    "ID" : "2400",
+    "password" : "forche240",
+    "user_name" : "김찬호",
+    "money" : 300000000,
+    "inventory" : [
+        {"item_code": 3, "item_count" : 5}
+    ]
+}
