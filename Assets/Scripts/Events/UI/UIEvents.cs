@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public abstract class UIEvents : MonoBehaviour
 {
     public abstract void Start();
-    public void Close(PointerEventData evt)
+    public void OnOffUI(PointerEventData evt)
     {
         Canvas canvas = gameObject.GetComponent<Canvas>();
         string name = canvas.ToString();

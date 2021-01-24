@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using DataStructure;
 
 public class TestData : MonoBehaviour
 {
@@ -18,13 +19,15 @@ public class TestData : MonoBehaviour
 
         // Debug.Log(JsonData);
 
-        TextAsset text = Managers.resource.Load<TextAsset>("Data/UserData");
-        Debug.Log(text);
-        UserData data = JsonUtility.FromJson<UserData>(text.text);
-        Debug.Log(data.ID);
-        Debug.Log(data.user_name);
-        Debug.Log(data.money);
-        Debug.Log(data.inventory[0].item_code);
+        // TextAsset text = Managers.resource.Load<TextAsset>("Data/UserData");
+        // Debug.Log(text);
+        // UserData data = JsonUtility.FromJson<UserData>(text.text);
+        // Debug.Log(data.ID);
+        // Debug.Log(data.user_name);
+        // Debug.Log(data.money);
+        // Debug.Log(data.inventory[0].item_code);
+
+        MapGenerator.GenerateMap(100,100);
         
     }
 

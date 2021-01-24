@@ -5,6 +5,8 @@ using UnityEngine;
 public class Define
 {
     public static float _tap_delay = 0.5f;
+
+    public const string DATA_PATH = "Assets/Resources/Data/";
     public enum Scene
     {
         Unknown,
