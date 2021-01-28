@@ -1,65 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using Define;
+using System;
 
 public class UIManager
 {
-    //스택
-    Stack<Canvas> _popup_stack = new Stack<Canvas>();
-    int _sort_order = 0;
-
-    public enum UIType
+    public Dictionary<CommonUI,GameObject> _common_UI_dict = new Dictionary<CommonUI,GameObject>();
+    public Dictionary<SceneUIType,GameObject> _scene_UI_dict = new Dictionary<SceneUIType, GameObject>();
+    public void LoadSceneUI()
     {
-        Popup,
-        Scene,
-    }
-    //로드
-    public GameObject LoadUI(string path)
-    {
-        GameObject go = Managers.resource.Load<GameObject>(path);
-        return go;
-    }
-    //열기
-    public Canvas OpenNewUI(string path, UIType type)
-    {
-        Canvas canvas = Managers.resource.Instantiate<Canvas>(path);
-        if(type == UIType.Popup)
+        GameObject UI_parent = GameObject.FindWithTag("UIObject");
+        GameObject UI_child;
+        int child_count = UI_parent.transform.childCount;
+        Debug.Log("Child 2? :"+child_count);
+        SceneUIType key;
+        string[] UI_name;
+        for(int i = 0; i < child_count; i++)
         {
-            _sort_order++;
-            canvas.sortingOrder = _sort_order;
+            UI_child = UI_parent.transform.GetChild(i).gameObject;
+            UI_name = UI_child.name.Split('_');
+            Debug.Log("name : "+UI_name[0]);
+            key = (SceneUIType)Enum.Parse(typeof(SceneUIType),UI_name[0]);
+            _scene_UI_dict.Add(key,UI_child);
         }
-        return canvas;
+        _scene_UI_dict[SceneUIType.Base].SetActive(true);
     }
-    //닫기
-    public bool CloseUI(Canvas canvas,bool forced = false)
+    
+    public void ClearSceneUI()
     {
-        if(canvas == null)
-        {
-            Debug.Log("No such UI!");
-            return false;
-        }
-        if(canvas.sortingOrder < _sort_order)
-        {
-            Debug.Log("Wrong order!");
-            return false;
-        }
-        Managers.resource.Destroy(canvas);
-        _sort_order--;
-        return true;
+        _scene_UI_dict.Clear();
+        int count = _scene_UI_dict.Count;
+        Debug.Log("clear ui, count :"+count);
     }
-
-    public void ToggleRayCast(Graphic graphic, bool active)
-    {
-        if(graphic == null) 
-        {   
-            Debug.Log("No UI element");
-            return;
-        }
-        string name = graphic.ToString();
-        graphic.raycastTarget = active;
-        Debug.Log($"raycast of {name} set {active}");
-    }
-
 
 }

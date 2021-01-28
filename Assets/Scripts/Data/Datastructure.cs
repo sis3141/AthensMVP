@@ -21,20 +21,14 @@ namespace DataStructure
             public int book_code;
             public int activity_code;
         }
-        [Serializable]
-        public struct MapInfo
-        {
-            public int x;
-            public int z;
-        }
+
+        public int map_size;        
         public int ID;
         public string password;
         public string user_name;
-        public int money;
+        public int book_money;
         public int book_count;
         public int item_count;
-        [SerializeField]
-        public MapInfo map_info;
 
         [SerializeField]
         public List<ItemInfo> inventory;
@@ -53,6 +47,6 @@ namespace DataStructure
         }
 
         [SerializeField]
-        public Row[] mapinfo;
+        public Row[] z;
     }
 }

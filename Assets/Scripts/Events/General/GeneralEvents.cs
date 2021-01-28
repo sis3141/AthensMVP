@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public abstract class GeneralEvents : MonoBehaviour
 {
     [SerializeField]
-    Define.Scene _scene_option = Define.Scene.Lobby;
+    Define.SceneType _scene_option = Define.SceneType.Lobby;
 
     public abstract void Start();
 

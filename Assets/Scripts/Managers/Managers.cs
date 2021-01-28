@@ -10,10 +10,12 @@ public class Managers : MonoBehaviour
     static Managers managers {get{Init();return _managers;}}
 
     //InputManager _input = new InputManager();
+    DataManager _data = new DataManager();
     ResourceManager _resource = new ResourceManager();
     SceneManagerEx _scene = new SceneManagerEx();
     UIManager _ui = new UIManager();
     //public static InputManager input {get{return managers._input;}}
+    public static DataManager data {get{return managers._data;}}
     public static ResourceManager resource {get{return managers._resource;}}
     public static SceneManagerEx scene {get{return managers._scene;}}
     public static UIManager ui {get{return managers._ui;}}
@@ -43,12 +45,12 @@ public class Managers : MonoBehaviour
             _managers = go.GetComponent<Managers>();
             Debug.Log("Managers on load!");
             //_managers._input.Init();
-            //산하 매니저 초기화
+            _managers._data.Init();
         }
     }
 
     public static void Clear()
     {
-        //산하매니저 삭제
+        _managers._ui.ClearSceneUI();
     }
 }

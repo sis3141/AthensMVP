@@ -27,7 +27,7 @@ public class TestData : MonoBehaviour
         // Debug.Log(data.money);
         // Debug.Log(data.inventory[0].item_code);
 
-        MapGenerator.GenerateMap(100,100);
+        //MapGenerator.GenerateMap(100,100);
         
     }
 

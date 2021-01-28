@@ -7,9 +7,11 @@ public class OnOffUI : MonoBehaviour
 {
     bool _is_active;
     GameObject _target_object;
+
+    public Define.SceneUIType _scene_UI_type;
     void Start()
     {
-        _target_object = GameObject.Find("UI_world_Inventory");
+        _target_object = Managers.ui._scene_UI_dict[_scene_UI_type];
         Utils.BindTouchEvent(gameObject,OnOff);
         _is_active = _target_object.activeSelf;
         Debug.Log("UI name :"+_target_object.name);

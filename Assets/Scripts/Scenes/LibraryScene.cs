@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LobbyScene : BaseScene
+public class LibraryScene : BaseScene
 {
     protected override void Init()
     {
         base.Init();
-        Debug.Log("Lobby loaded");
-        _scene_type = Define.SceneType.Lobby;
-        Toggle3DRaycast(true);
+        Debug.Log("Library loaded");
+        _scene_type = Define.SceneType.Library;
     }
     public override void Clear()
     {
