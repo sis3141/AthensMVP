@@ -14,11 +14,11 @@ public class ReadBook : MonoBehaviour
        Utils.BindTouchEvent(gameObject,CompleteReadBook);
     }
 
-    public void CompleteReadBook(PointerEventData evt)
+    public void CompleteReadBook()
     {
-        Managers.data._user.book_count++;
-        Managers.data._user.book_money++;
-        int count = Managers.data._user.book_count;
+        Managers.data._user_DB.book_count++;
+        //Managers.data._user.book_money++;
+        int count = Managers.data._user_DB.book_count;
         if(count < 3)
             Debug.Log($"Tutorial event {count} !");
         // else if(count%10 == 0)
@@ -32,7 +32,7 @@ public class ReadBook : MonoBehaviour
 
      public void ObtainNewItem()
     {
-        Managers.data._user.item_count++;
+        //Managers.data._user.item_count++;
         //GameObject slot = _inven_item.transform.GetChild(Managers.data._user.item_count).gameObject;
         //slot.GetComponent<Image>().enabled = true;
         //change inventory's nth item to active

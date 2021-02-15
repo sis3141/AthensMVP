@@ -1,15 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using System;
+using UnityEngine.EventSystems;
 
-public class EventHandlers : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, IDragHandler, IDropHandler
+public class EzEventHandlers : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, IDragHandler, IDropHandler
 {
-    public Action<PointerEventData> OnClickHandler = null;
-    public Action<PointerEventData> OnDragHandler = null;
-    public Action<PointerEventData> OnDownHandler = null;
-    public Action<PointerEventData> OnUpHandler = null;
+    public Action OnClickHandler = null;
+    public Action OnDragHandler = null;
+    public Action OnDownHandler = null;
+    public Action OnUpHandler = null;
     public int _max_finger_id = 1;
 
     void Start()
@@ -20,7 +20,7 @@ public class EventHandlers : MonoBehaviour, IPointerClickHandler, IPointerDownHa
     {
         if(OnDragHandler != null)
             if(evt.pointerId < _max_finger_id)
-                OnDragHandler.Invoke(evt);
+                OnDragHandler.Invoke();
     }
 
     public void OnDrop(PointerEventData evt)
@@ -31,20 +31,20 @@ public class EventHandlers : MonoBehaviour, IPointerClickHandler, IPointerDownHa
     {
         if(OnClickHandler != null)
             if(evt.pointerId < _max_finger_id)
-                OnClickHandler.Invoke(evt);
+                OnClickHandler.Invoke();
     }
 
     public void OnPointerDown(PointerEventData evt)
     {
         if(OnDownHandler != null)
             if(evt.pointerId < _max_finger_id)
-                OnDownHandler.Invoke(evt);
+                OnDownHandler.Invoke();
     }
 
     public void OnPointerUp(PointerEventData evt)
     {
         if(OnUpHandler != null)
             if(evt.pointerId < _max_finger_id)
-                OnUpHandler.Invoke(evt);
+                OnUpHandler.Invoke();
     }
 }

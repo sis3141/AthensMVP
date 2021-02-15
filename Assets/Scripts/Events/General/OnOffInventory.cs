@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class OnOffUI : MonoBehaviour
+public class OnOffInventory : MonoBehaviour
 {
     bool _is_active;
     GameObject _target_object;
@@ -17,7 +16,7 @@ public class OnOffUI : MonoBehaviour
         Debug.Log("UI name :"+_target_object.name);
     }
 
-    public void OnOff(PointerEventData evt)
+    public void OnOff()
     {
         if(_is_active)
         {
@@ -28,6 +27,7 @@ public class OnOffUI : MonoBehaviour
         {
             _target_object.SetActive(true);
             _is_active = true;
+            _target_object.GetComponent<Island_Inventory>().LoadInventory();
         }
     }
 }

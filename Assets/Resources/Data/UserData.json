@@ -1,11 +1,1 @@
-{
-    "ID" : "",
-    "password" : "",
-    "user_name" : "",
-    "book_money" : 0,
-    "book_count" : 0,
-    "item_count" : 0,
-    "inventory" : [],
-    "book_history" : [],
-    "map_size" : 4
-}
+{"index":0,"user_name":"","password":"","book_count":0,"money":0}

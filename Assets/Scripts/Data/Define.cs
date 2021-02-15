@@ -25,6 +25,7 @@ namespace Define
         Drag,
         DoubleTap,
         Down,
+        Up,
     }
 
     public enum CameraMode
@@ -41,6 +42,30 @@ namespace Define
     {
         Base,
         Inventory,
+        Info,
+        Dictionary,
+    }
+
+    public enum ItemType
+    {
+        None,
+        Building,
+    }
+
+    public enum BookTarget
+    {
+        Child,
+        Adult,
+    }
+
+    public enum DBHeader
+    {
+        index,
+        name,
+        type,
+        size,
+        explain,
+
     }
 
 }

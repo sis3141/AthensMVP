@@ -11,6 +11,12 @@ public abstract class BaseScene : MonoBehaviour
     public Define.SceneType _scene_type {get; protected set;} = SceneType.Unknown;
     public GameObject _main_camera;
     public Behaviour _3d_raycaster;
+
+    public Dictionary<int,GameObject> _pool = new Dictionary<int, GameObject>();
+
+    public GameObject _pool_object;
+
+    public int _max_finger_id;
     void Awake()
     {
         Init();
@@ -22,6 +28,8 @@ public abstract class BaseScene : MonoBehaviour
         _main_camera = GameObject.FindWithTag("MainCamera");
         _3d_raycaster = Utils.GetOrAddComponent<PhysicsRaycaster>(_main_camera);
         _3d_raycaster.enabled = false;
+        _max_finger_id = 1;
+        _pool_object = GameObject.Find("@Pool");
     }
 
     public abstract void Clear();

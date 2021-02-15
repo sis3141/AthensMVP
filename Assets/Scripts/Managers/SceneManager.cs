@@ -6,11 +6,12 @@ using Define;
 
 public class SceneManagerEx //: SceneManager
 {
-    public BaseScene CurrentScene {get {return GameObject.FindObjectOfType<BaseScene>();}}
+    public BaseScene _current_scene {get{return GameObject.FindObjectOfType<BaseScene>();} set{_current_scene = value;}}
     public void LoadScene(SceneType type)
     {
         Managers.Clear();
         SceneManager.LoadScene(GetSceneName(type));
+        _current_scene = GameObject.FindObjectOfType<BaseScene>();
     }
 
     string GetSceneName(SceneType type)
@@ -21,6 +22,6 @@ public class SceneManagerEx //: SceneManager
 
     public void Clear()
     {
-        CurrentScene.Clear();
+        _current_scene.Clear();
     }
 }
