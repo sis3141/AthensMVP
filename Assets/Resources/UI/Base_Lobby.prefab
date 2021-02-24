@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2141718406483494986}
   - component: {fileID: 511881283223325471}
   - component: {fileID: 9195464866468647474}
+  - component: {fileID: 2386678318776062821}
   m_Layer: 5
   m_Name: Button_Island
   m_TagString: Untagged
@@ -33,10 +34,10 @@ RectTransform:
   m_Father: {fileID: 1550704293935597002}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 248, y: 129}
-  m_SizeDelta: {x: 188.97787, y: 187.21063}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -146, y: -131.4101}
+  m_SizeDelta: {x: 245.56165, y: 223.58594}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &511881283223325471
 CanvasRenderer:
@@ -75,6 +76,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2386678318776062821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788071372208726060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e95c4c377eb3b0845b83b5a230434b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scene_option: 5
 --- !u!1 &3156593860762573850
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,11 +155,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 40
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
-    m_MaxSize: 40
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -187,8 +201,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1.1971}
-  m_SizeDelta: {x: 800, y: 447.60486}
+  m_AnchoredPosition: {x: -4.3, y: 1.2562}
+  m_SizeDelta: {x: 1933.1499, y: 1081.6094}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1040855533422058901
 CanvasRenderer:
@@ -301,9 +315,9 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 2
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -391,11 +405,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 40
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
-    m_MaxSize: 40
+    m_MaxSize: 50
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -414,6 +428,7 @@ GameObject:
   - component: {fileID: 4998756677202637075}
   - component: {fileID: 7640374942279401910}
   - component: {fileID: 3281698875700202998}
+  - component: {fileID: 2431978617493643079}
   m_Layer: 5
   m_Name: Button_Library
   m_TagString: Untagged
@@ -436,10 +451,10 @@ RectTransform:
   m_Father: {fileID: 1550704293935597002}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000011444, y: 129}
-  m_SizeDelta: {x: 191.2453, y: 192.47302}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -467, y: -130}
+  m_SizeDelta: {x: 247.82898, y: 220.7649}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7640374942279401910
 CanvasRenderer:
@@ -478,3 +493,16 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2431978617493643079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7075965585908415315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e95c4c377eb3b0845b83b5a230434b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scene_option: 3

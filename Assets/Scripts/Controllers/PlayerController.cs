@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 		if(Input.touchCount > 0)
 		{
 			Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            Debug.DrawRay(Camera.main.transform.position,ray.direction,Color.red);
             if(Physics.Raycast(ray, out _hit, 100.0f, LayerMask.GetMask("Field")))
             {
                 _destpos = _hit.point;

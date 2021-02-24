@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Define;
 
 public class OnOffUI : MonoBehaviour
 {
@@ -26,6 +27,14 @@ public class OnOffUI : MonoBehaviour
         }
         else
         {
+            // int count = Managers.ui._scene_UI_dict.Keys.Count;
+            // SceneUIType[] key_index = new SceneUIType[count];
+            // Managers.ui._scene_UI_dict.Keys.CopyTo(key_index,0);
+            // for(int i = 0;i<count; i++)
+            // {
+            //     SceneUIType key =  key_index[i];
+            //     Managers.ui._scene_UI_dict[key].SetActive(false);
+            // }
             _target_object.SetActive(true);
             _is_active = true;
         }

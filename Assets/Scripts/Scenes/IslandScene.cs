@@ -11,7 +11,7 @@ public class IslandScene : BaseScene
         _scene_type = Define.SceneType.Island;
         Toggle3DRaycast(true);
         _max_finger_id = 2;
-        _pool = Utils.LoadAllToDict("Prefabs/Scenes/Island");
+        //_pool = Utils.LoadAllToDict("Prefabs/Scenes/Island");
     }
     public override void Clear()
     {

@@ -46,6 +46,7 @@ public class Managers : MonoBehaviour
             Debug.Log("Managers on load!");
             //_managers._input.Init();
             _managers._data.Init();
+            _managers._scene.Init();
         }
     }
 

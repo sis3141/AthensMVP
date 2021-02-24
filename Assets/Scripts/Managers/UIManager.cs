@@ -19,10 +19,22 @@ public class UIManager
         for(int i = 0; i < child_count; i++)
         {
             UI_child = UI_parent.transform.GetChild(i).gameObject;
+            // UI_child.SetActive(true);
+            // Debug.Log("activate "+UI_child.name);
+            // UI_child.SetActive(false);
             UI_name = UI_child.name.Split('_');
             Debug.Log("name : "+UI_name[0]);
             key = (SceneUIType)Enum.Parse(typeof(SceneUIType),UI_name[0]);
             _scene_UI_dict.Add(key,UI_child);
+        }
+        int key_count = _scene_UI_dict.Keys.Count;
+        SceneUIType[] UI_key_index = new SceneUIType[key_count];
+        _scene_UI_dict.Keys.CopyTo(UI_key_index,0);
+        for(int i = 0; i<key_count; i++)
+        {
+            GameObject ui = _scene_UI_dict[UI_key_index[i]];
+            ui.SetActive(true);
+            ui.SetActive(false);
         }
         _scene_UI_dict[SceneUIType.Base].SetActive(true);
     }

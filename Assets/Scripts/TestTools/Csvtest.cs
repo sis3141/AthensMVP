@@ -5,7 +5,6 @@ using System;
 using Define;
 using UnityEngine.EventSystems;
 using DataStructure;
-using Newtonsoft.Json;
 using System.IO;
 using System.Text;
 
@@ -38,17 +37,17 @@ public class Csvtest : MonoBehaviour
         Island_Inventory.TAddItem(1,3);
     }
 
-    public T JsonToObject<T>(string path,string name)
-    {
-        TextAsset text = Managers.resource.Load<TextAsset>(path+"/"+name);
-        return JsonConvert.DeserializeObject<T>(text.text);
+    // public T JsonToObject<T>(string path,string name)
+    // {
+    //     TextAsset text = Managers.resource.Load<TextAsset>(path+"/"+name);
+    //     //return JsonConvert.DeserializeObject<T>(text.text);
         
-    }
+    // }
 
-    public string ObjectToJson(object obj)
-    {
-        return JsonConvert.SerializeObject(obj);
-    }
+    // public string ObjectToJson(object obj)
+    // {
+    //     //return JsonConvert.SerializeObject(obj);
+    // }
 
     public static void CreateJsonFile(string createPath, string fileName, string jsonData)
     {
@@ -61,15 +60,15 @@ public class Csvtest : MonoBehaviour
         Debug.Log("내용"+jsonData);
     }
 
-    T LoadJsonFile<T>(string loadPath, string fileName)
-    {
-        FileStream fileStream = new FileStream(string.Format("{0}/{1}.json", loadPath, fileName), FileMode.Open);
-        byte[] data = new byte[fileStream.Length];
-        fileStream.Read(data, 0, data.Length);
-        fileStream.Close();
-        string jsonData = Encoding.UTF8.GetString(data);
-        return JsonConvert.DeserializeObject<T>(jsonData);
-    }
+    // T LoadJsonFile<T>(string loadPath, string fileName)
+    // {
+    //     FileStream fileStream = new FileStream(string.Format("{0}/{1}.json", loadPath, fileName), FileMode.Open);
+    //     byte[] data = new byte[fileStream.Length];
+    //     fileStream.Read(data, 0, data.Length);
+    //     fileStream.Close();
+    //     string jsonData = Encoding.UTF8.GetString(data);
+    //     //return JsonConvert.DeserializeObject<T>(jsonData);
+    // }
 
     public string JsonToString(string loadPath, string fileName)
     {

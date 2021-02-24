@@ -44,6 +44,7 @@ namespace Define
         Inventory,
         Info,
         Dictionary,
+        BookReader,
     }
 
     public enum ItemType

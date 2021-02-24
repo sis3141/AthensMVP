@@ -11,6 +11,7 @@ using UnityEngine.EventSystems;
 public class Island_Inventory : MonoBehaviour
 {
     Transform _inventory;
+    Transform _background;
     Sprite[] _icon_image;
     Transform _item_info_page;
     //어떻게 전달할거?
@@ -19,29 +20,34 @@ public class Island_Inventory : MonoBehaviour
 
     public bool testoption;
 
-    void Start()
+    void Awake()
     {
         ref Dictionary<int,ItemInfoDict> _item_dict = ref Managers.data._user_DB.item.dict;
         _icon_image = Resources.LoadAll<Sprite>("Images/inven_icon");
         _inventory = transform;
+        _background = _inventory.GetChild(0);
         _item_info_page = Managers.ui._scene_UI_dict[Define.SceneUIType.Info].transform;
-        _item_info_page.gameObject.SetActive(false);
+        Utils.BindTouchEvent(gameObject,ShowItemInfo);
+        Debug.Log("inven opened");
+    }
+
+    void OnEnable()
+    {
         if(testoption)
             LoadInventory();
         else
             LoadDictionary();
-        Utils.BindTouchEvent(gameObject,ShowItemInfo);
     }
 
     public void LoadInventory()
     {
         ref ItemDict user_item = ref Managers.data._user_DB.item;
-        Transform background = _inventory.GetChild(0);
+        
         int page_count = user_item.Count();
         for(var p = 0; p< page_count; p++)
         {
             int item_count = user_item[p].Count;
-            Transform page = background.transform.GetChild(p);
+            Transform page = _background.transform.GetChild(p);
             int[] item_keys = new int[user_item[p].Keys.Count];
             user_item[p].Keys.CopyTo(item_keys, 0);
             int slot_index = 0;
@@ -55,6 +61,7 @@ public class Island_Inventory : MonoBehaviour
                     Image image = Utils.GetOrAddComponent<Image>(slot);
                     image.sprite = _icon_image[item_index];
                     slot_index++;
+                    Debug.Log("Icon loaded : "+item_index);
                 }
             }
         }
@@ -107,24 +114,32 @@ public class Island_Inventory : MonoBehaviour
         string count;
         string name;
         string explain;
-        icon = _icon_image[index];
         if(testoption)
-            type = current_page;
-        else
-            type = (int)item_DB[DBHeader.type].GetValue(index);
-        int[] key_index = new int[user_item[type].Keys.Count];
-        user_item[type].Keys.CopyTo(key_index,0); 
-        if(index >= key_index.Length && testoption)
         {
-            Debug.Log("["+type+"],["+index+"] is not found");
-            return;
-        }
-        if(testoption)
+            type = current_page;
+            int[] key_index = new int[user_item[type].Keys.Count];
+            user_item[type].Keys.CopyTo(key_index,0); 
+            if(index >= key_index.Length && testoption)
+            {
+                Debug.Log("["+type+"],["+index+"] is not found");
+                return;
+            }
             index = key_index[index];      //빈슬롯 선택시
-        if(testoption)
             count = user_item[type][index].count.ToString();
+        }
         else
+        {
+            if(index >= item_DB.Keys.Count)
+            {
+                Debug.Log("["+index+"] is not found");
+                return;
+            }
+
+            type = (int)item_DB[DBHeader.type].GetValue(index);
             count = "0";
+        }
+
+        icon = _icon_image[index];
         name = (string)item_DB[DBHeader.name].GetValue(index);
         explain = (string)item_DB[DBHeader.explain].GetValue(index);
 
@@ -167,10 +182,10 @@ public class Island_Inventory : MonoBehaviour
         if(!_user_item[type].ContainsKey(index))
             _user_item[type].Add(index,new ItemInfo(count));
         else
-            {
-                int current_count = _user_item[type][index].count;
-                _user_item[type][index] = new ItemInfo(current_count+count);
-            }
+        {
+            int current_count = _user_item[type][index].count;
+            _user_item[type][index] = new ItemInfo(current_count+count);
+        }
         Debug.Log("and dictionary :" +_user_item[type][index].count);
     }
     //test
@@ -188,10 +203,10 @@ public class Island_Inventory : MonoBehaviour
         if(!_user_item[type].ContainsKey(index))
             _user_item[type].Add(index,new ItemInfo(count));
         else
-            {
-                int current_count = _user_item[type][index].count;
-                _user_item[type][index] = new ItemInfo(current_count+count);
-            }
+        {
+            int current_count = _user_item[type][index].count;
+            _user_item[type][index] = new ItemInfo(current_count+count);
+        }
         Debug.Log("and dictionary :" +_user_item[type][index].count);
     }
 

@@ -2,10 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuitGame : GeneralEvents
+public class QuitGame : MonoBehaviour
 {
-    public override void Start()
+     void Start()
     {
-        Utils.BindTouchEvent(gameObject,QuitGame);
+        Utils.BindTouchEvent(gameObject,Quit_Game);
+    }
+
+    public void Quit_Game()
+    {
+        Debug.Log("Quit Game");
+        Application.Quit();
     }
 }
