@@ -32,7 +32,11 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
+<<<<<<< HEAD
     value: 7
+=======
+    value: 7.01
+>>>>>>> a1a665ac331c8d28b3a8125e1176f930499b5259
   threshold:
     overrideState: 1
     value: 1
