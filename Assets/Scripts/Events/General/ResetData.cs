@@ -15,7 +15,7 @@ public class ResetData : MonoBehaviour
 
     public void Reset_Data()
     {
-        Managers.data._user_DB = Managers.data.LoadJson<UserData>("ResetData/UserDB");
+        Managers.data.LoadJson<UserData>("ResetData/UserDB",ref Managers.data._user_DB);
         string jsonstring = JsonUtility.ToJson(Managers.data._user_DB);
         Csvtest.CreateJsonFile(Application.dataPath+"/Resources/Data","UserDB",jsonstring);
     }

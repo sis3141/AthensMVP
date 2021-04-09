@@ -1,4 +1,4 @@
-﻿Int32,Int32,String
-index,type,name
-0,0,반쪽이1
-1,0,반쪽이2
+﻿Int32,String,Int32,String
+index,name,type,writer
+0,생강빵아이,0,서봉
+1,반쪽이,0,마이리 매키넌

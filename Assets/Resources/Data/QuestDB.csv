@@ -1,0 +1,4 @@
+﻿Int32,Int32,String,Int32,Int32,Int32,Int32,Int32
+index,stage,name,character,type,var1,var2,num
+0,0,피피의 분리수거,2,0,1,2,1
+1,0,피피의 부조리,2,1,0,13,1

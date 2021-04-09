@@ -4,17 +4,20 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System;
 
-public class EventHandlers : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, IDragHandler, IDropHandler
+public class EventHandlers : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, IDragHandler, IDropHandler, IBeginDragHandler, IEndDragHandler
 {
     public Action<PointerEventData> OnClickHandler = null;
     public Action<PointerEventData> OnDragHandler = null;
     public Action<PointerEventData> OnDownHandler = null;
     public Action<PointerEventData> OnUpHandler = null;
+    public Action<PointerEventData> OnDropHandler = null;
+    public Action<PointerEventData> OnBeginDragHandler = null;
+    public Action<PointerEventData> OnEndDragHandler = null;
     public int _max_finger_id = 1;
 
     void Start()
     {
-        _max_finger_id = Managers.scene._current_scene._max_finger_id;
+        _max_finger_id = Managers.scene._max_finger_id;
     }
     public void OnDrag(PointerEventData evt)
     {
@@ -25,6 +28,9 @@ public class EventHandlers : MonoBehaviour, IPointerClickHandler, IPointerDownHa
 
     public void OnDrop(PointerEventData evt)
     {
+        if(OnDropHandler != null)
+            if(evt.pointerId < _max_finger_id)
+                OnDropHandler.Invoke(evt);
     }
 
     public void OnPointerClick(PointerEventData evt)
@@ -46,5 +52,19 @@ public class EventHandlers : MonoBehaviour, IPointerClickHandler, IPointerDownHa
         if(OnUpHandler != null)
             if(evt.pointerId < _max_finger_id)
                 OnUpHandler.Invoke(evt);
+    }
+
+    public void OnBeginDrag(PointerEventData evt)
+    {
+        if(OnBeginDragHandler != null)
+            if(evt.pointerId < _max_finger_id)
+                OnBeginDragHandler.Invoke(evt);
+    }
+
+    public void OnEndDrag(PointerEventData evt)
+    {
+        if(OnEndDragHandler != null)
+            if(evt.pointerId < _max_finger_id)
+                OnEndDragHandler.Invoke(evt);
     }
 }
