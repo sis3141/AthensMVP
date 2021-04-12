@@ -14,6 +14,7 @@ public class Managers : MonoBehaviour
     public static Action StageInvoker = null;
 
     public static Action<ItemTypeInfo> ItemInvoker = null;
+    public static Action<int> _time_invoker = null;
 
  
     //InputManager _input = new InputManager();

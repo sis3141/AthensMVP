@@ -25,10 +25,20 @@ public class InitialUserDB : MonoBehaviour
         u.effect_volume = 0.5f;
         u.achievement = new Achievement(5);
         u.book = new BookInfoDict(new O_Dictionary<int, BookInfo>());
+    //    u.book.Add(0,new BookInfo());
+
         u.planet = new PlanetInfoDict(new O_Dictionary<int, MapInfoDict>());
+        u.planet.Add(0,new MapInfoDict(new O_Dictionary<int, MapData_build>()));
+        u.planet[0].Add(0,new MapData_build(5,5));
+        Debug.Log(u.planet[0][0].x_length);
+
         u.item_normal = new ItemInfoDict(new O_Dictionary<int, ItemInfo>());
+     //   u.item_normal.Add(0,new ItemInfo(0,1));
+
         u.item_build = new ItemInfoDict(new O_Dictionary<int, ItemInfo>());
+      //  u.item_build.Add(0,new ItemInfo(0,1));
         u.quest = new QuestInfoDict(new O_Dictionary<int,QuestInfo>());
+       // u.quest.Add(0, new QuestInfo("dd",0,1,new ItemTypeInfo(),false));
 
         UpdateData<UserData>(u,"UserDB");
     }

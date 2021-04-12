@@ -6,6 +6,7 @@ using Define;
 using DataStructure;
 using System;
 using System.Text.RegularExpressions;
+using System.Linq;
 //using System.Collections.Specialized;
 
 public class DataManager
@@ -63,7 +64,7 @@ public class DataManager
     public Dictionary<int,DialogueInfo> _progress_dialogue;// = new Dictionary<int, DialogueInfo>();
 
     public Dictionary<int,Dictionary<int, GameObject>> _mapper_dict = new Dictionary<int, Dictionary<int, GameObject>>();
-    public Dictionary<DBHeader,Dictionary<int, string[]>> _building_info_dict = new Dictionary<DBHeader, Dictionary<int, string[]>>();
+    public Dictionary<DBHeader,Dictionary<int, Dictionary<int,int[]>>> _building_info_dict = new Dictionary<DBHeader, Dictionary<int, Dictionary<int, int[]>>>();
     bool[] _normal = {true,true,true,true,true,true};
     bool[] _build = {true,true,true};
 
@@ -165,21 +166,27 @@ public class DataManager
 
 
     }
-    public void LoadBuildLevelInfo(ref Dictionary<DBHeader,Dictionary<int,string[]>> dict)
+    public void LoadBuildLevelInfo(ref Dictionary<DBHeader,Dictionary<int,Dictionary<int,int[]>>> dict)
     {
-        dict.Add(DBHeader.duration,new Dictionary<int, string[]>());
-        dict.Add(DBHeader.evolution, new Dictionary<int, string[]>());
-        dict.Add(DBHeader.destroy, new Dictionary<int, string[]>());
-        dict.Add(DBHeader.num, new Dictionary<int, string[]>());
+        dict.Add(DBHeader.duration,new Dictionary<int, Dictionary<int, int[]>>());
+        dict.Add(DBHeader.evolution, new Dictionary<int, Dictionary<int, int[]>>());
+        dict.Add(DBHeader.destroy, new Dictionary<int, Dictionary<int, int[]>>());
+        dict.Add(DBHeader.num, new Dictionary<int, Dictionary<int, int[]>>());
 
         string[] duration = _item_DB_b.S(DBHeader.duration);
 
-        foreach(KeyValuePair<DBHeader,Dictionary<int,string[]>> page in dict)
+        foreach(KeyValuePair<DBHeader,Dictionary<int,Dictionary<int,int[]>>> page in dict)
         {
             string[] strarr = _item_DB_b.S(page.Key);
             for(int i = 0; i< strarr.Length; i++)
             {
-                page.Value.Add(i,strarr[i].Split('/'));
+                string[] sub_arr = strarr[i].Split('/');
+                Dictionary<int,int[]> sub_dict = new Dictionary<int, int[]>();
+                for(int j = 0; j<sub_arr.Length; j++)
+                {
+                    sub_dict.Add(j, sub_arr[j].Split(',').Select(Int32.Parse).ToArray());
+                }
+                dict[page.Key].Add(i,sub_dict);
             }
         }
 
@@ -280,7 +287,7 @@ public class DataManager
 
         for(int i = 0; i< length; i++)
         {
-            if(stage[i]==input_stage)
+            if(stage[i]==input_stage && !dict.ContainsKey(index[i]))
             {
                 ItemTypeInfo i_info = new ItemTypeInfo(var1[i],var2[i],num[i]);
                 QuestInfo q_info = new QuestInfo(name[i],type[i],character[i],i_info,true);

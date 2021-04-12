@@ -30,10 +30,10 @@ public class Inventory : PopupUI
     public int _curr_page = 0;
     float _time;
 
-    int _max_tab = 4;
-    int[] _max_page = new int[4]{2,2,2,2};
-    int[] _max_slot = new int[4]{16,16,16,16};
-    int[][] _code = new int[][]
+    public int _max_tab = 4;
+    public int[] _max_page = new int[4]{2,2,2,2};
+    public int[] _max_slot = new int[4]{16,16,16,16};
+    public int[][] _code = new int[][]
     {
         new int[]{0,0,0,1,1,1},
         new int[]{2,3,3}
@@ -109,17 +109,20 @@ public class Inventory : PopupUI
     {
         ref Dictionary<int,O_Dictionary<int,ItemInfo>> _dict = ref Managers.data._category_inven;
         bool first = !_dict.ContainsKey(0);
-        GameObject ui = Instantiate(_tabs.gameObject);
+        //GameObject ui = Instantiate(_tabs.gameObject);
         for(var i = 0; i< tap_num ; i++)
         {
-            GameObject new_tab = Instantiate(ui,_tabs.transform);
+            GameObject new_tab = _tabs.transform.GetChild(i).gameObject;
             new_tab.name = "tab "+i;
+            Debug.Log("tab create "+i);
             if(first)
                 _dict.Add(i,new O_Dictionary<int, ItemInfo>());
             for(var j = 0; j<max_page[i]; j++)
             {
-                GameObject new_page = Instantiate(_preset,new_tab.transform);
+               // GameObject new_page = Instantiate(_preset.transform.GetChild(j).gameObject,new_tab.transform);
+                GameObject new_page = Instantiate(_preset.transform.GetChild(j).gameObject,new_tab.transform);
                 new_page.name = "page "+j;
+                Debug.Log("page create"+j);
                 for(var k = 0; k<_max_slot[i]; k++)
                 {
                     GameObject new_slot = Instantiate(_slot, new_page.transform);
@@ -132,7 +135,7 @@ public class Inventory : PopupUI
             new_tab.gameObject.SetActive(false);
         }
         _tabs.GetChild(0).gameObject.SetActive(true);
-        Destroy(ui);
+       // Destroy(ui);
         Destroy(_preset);
         Destroy(_slot);
         string s = "";
@@ -144,11 +147,9 @@ public class Inventory : PopupUI
     }
     public void LoadInventory(int tap_num, int[] max_page, int[] max_slot, int[][] code)
     {
-        if(_tabs.childCount != 0)
-            return;
        MakeInven(tap_num,max_page,max_slot);
        ref Dictionary<int,O_Dictionary<int,ItemInfo>> _dict = ref Managers.data._category_inven;
-        bool first = !_dict.ContainsKey(0);
+        //bool first = !_dict.ContainsKey(0);
         int type_count = code.Length;
         for(int t = 0; t< type_count; t++)
         {
@@ -159,9 +160,9 @@ public class Inventory : PopupUI
             foreach(KeyValuePair<int,ItemInfo> set in user_item.dict)
             {
                 int tap = code[t][set.Value.type];
-                if(first)
-                    _dict[tap].Add(set.Key,set.Value);
-                int length = _dict[tap].Count;
+               // if(first)
+                _dict[tap].Add(set.Key,set.Value);
+                int length = _dict[tap].Count-1;
                 int page_n = length/max_slot[tap];
                 int slot_n = length%max_slot[tap];
                 Transform slot = _tabs.GetChild(tap).GetChild(page_n).GetChild(slot_n);

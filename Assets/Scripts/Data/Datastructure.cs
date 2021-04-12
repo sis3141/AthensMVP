@@ -13,22 +13,12 @@ namespace DataStructure
             List<KeyValuePair<TKey,TValue>> _innerList;
             Dictionary<TKey, TValue> _innerDictionary;
             IEqualityComparer<TKey> _comparer = null;
-            /// <summary>
-            /// Creates an ordered dictionary with the specified capacity and comparer
-            /// </summary>
-            /// <param name="capacity">The initial capacity</param>
-            /// <param name="comparer">The comparer</param>
             public O_Dictionary(int capacity,IEqualityComparer<TKey> comparer)
             {
                 _innerDictionary = new Dictionary<TKey, TValue>(capacity, comparer);
                 _innerList = new List<KeyValuePair<TKey,TValue>>(capacity);
                 _comparer = comparer;
             }
-            /// <summary>
-            /// Creates an ordered dictionary with the specified items and the specified comparer
-            /// </summary>
-            /// <param name="collection">The collection or dictionary to copy from</param>
-            /// <param name="comparer">The comparer to use</param>
             public O_Dictionary(IEnumerable<KeyValuePair<TKey,TValue>> collection, IEqualityComparer<TKey> comparer)
             {
                 _innerDictionary = new Dictionary<TKey, TValue>(comparer);
@@ -36,48 +26,32 @@ namespace DataStructure
                 _AddValues(collection);
                 _comparer = comparer;
             }
-            /// <summary>
-            /// Creates an ordered dictionary with the specified capacity
-            /// </summary>
-            /// <param name="capacity">The initial capacity</param>
             public O_Dictionary(int capacity)
             {
                 _innerDictionary = new Dictionary<TKey, TValue>(capacity);
                 _innerList = new List<KeyValuePair<TKey, TValue>>(capacity);
             }
-            /// <summary>
-            /// Creates an ordered dictionary filled with the specified collection or dictionary
-            /// </summary>
-            /// <param name="collection">The collection or dictionary to copy</param>
+ 
             public O_Dictionary(IEnumerable<KeyValuePair<TKey, TValue>> collection)
             {
                 _innerDictionary = new Dictionary<TKey, TValue>();
                 _innerList = new List<KeyValuePair<TKey, TValue>>();
                 _AddValues(collection);
             }
-            /// <summary>
-            /// Creates an ordered dictionary with the specified comparer
-            /// </summary>
-            /// <param name="comparer">The equality comparer to use for the keys</param>
+            
             public O_Dictionary(IEqualityComparer<TKey> comparer)
             {
                 _innerDictionary = new Dictionary<TKey, TValue>(comparer);
                 _innerList = new List<KeyValuePair<TKey, TValue>>();
                 _comparer = comparer;
             }
-            /// <summary>
-            /// Creates a default instance of the ordered dictionary
-            /// </summary>
+            
             public O_Dictionary()
             {
                 _innerDictionary = new Dictionary<TKey, TValue>();
                 _innerList = new List<KeyValuePair<TKey, TValue>>();
             }
-            /// <summary>
-            /// Gets the value at the specified index
-            /// </summary>
-            /// <param name="index">The index of the value to retrieve</param>
-            /// <returns>The value of the item at the specified index</returns>
+            
             public TKey GetKey(int index)
             {
                 return _innerList[index].Key;
@@ -92,23 +66,13 @@ namespace DataStructure
                 return _innerList.IndexOf(pair);
             }
 
-            /// <summary>
-            /// Sets the value at the specified index
-            /// </summary>
-            /// <param name="index">The index of the value to set</param>
-            /// <param name="value">The new value to assign</param>
             public void SetAt(int index,TValue value)
             {
                 var key = _innerList[index].Key;
                 _innerList[index] = new KeyValuePair<TKey, TValue>(key, value);
                 _innerDictionary[key] = value;
             }
-            /// <summary>
-            /// Inserts an item into the ordered dictionary at the specified position
-            /// </summary>
-            /// <param name="index">The index to insert the item before</param>
-            /// <param name="key">The key of the new item</param>
-            /// <param name="value">The value of the new item</param>
+            
             public void Insert(int index, TKey key, TValue value)
                 => (this as IList<KeyValuePair<TKey, TValue>>).Insert(index, new KeyValuePair<TKey, TValue>(key, value));
             void _AddValues(IEnumerable<KeyValuePair<TKey,TValue>> collection)
@@ -122,10 +86,7 @@ namespace DataStructure
 	    }
     partial class O_Dictionary<TKey,TValue> : IEnumerable<KeyValuePair<TKey,TValue>>
         {
-            /// <summary>
-            /// Gets an enumerator for this dictionary
-            /// </summary>
-            /// <returns>A new enumerator suitable for iterating through the items in the dictionary in stored order</returns>
+      
             public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
                 => _innerList.GetEnumerator();
             IEnumerator IEnumerable.GetEnumerator()
@@ -133,9 +94,7 @@ namespace DataStructure
         }
     partial class O_Dictionary<TKey, TValue> : ICollection<KeyValuePair<TKey, TValue>>
 	{
-		/// <summary>
-		/// Returns the count of items in the dictionary
-		/// </summary>
+
 		public int Count => _innerList.Count;
 
 		bool ICollection<KeyValuePair<TKey,TValue>>.IsReadOnly => false;
@@ -145,9 +104,6 @@ namespace DataStructure
 			_innerDictionary.Add(item.Key, item.Value);
 			_innerList.Add(item);
 		}
-		/// <summary>
-		/// Clears all the items from the dictionary
-		/// </summary>
 		public void Clear()
 		{
 			_innerDictionary.Clear();
@@ -167,11 +123,7 @@ namespace DataStructure
 			}
 			return false;
 		}
-		/// <summary>
-		/// Copies the items in the dictionary to the specified array, starting at the specified destination index
-		/// </summary>
-		/// <param name="array">The array to copy to</param>
-		/// <param name="arrayIndex">The index into <paramref name="array"/> at which copying begins</param>
+
 		public void CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
 		{
 			_innerList.CopyTo(array, arrayIndex);
@@ -186,25 +138,13 @@ namespace DataStructure
 	}
     partial class O_Dictionary<TKey,TValue> : IDictionary<TKey,TValue>
 	{
-		/// <summary>
-		/// Adds an item to the end of the dictionary
-		/// </summary>
-		/// <param name="key">The key to add</param>
-		/// <param name="value">The value to add</param>
+		
 		public void Add(TKey key, TValue value)
 			=> (this as ICollection<KeyValuePair<TKey, TValue>>).Add(new KeyValuePair<TKey, TValue>(key,value));
-		/// <summary>
-		/// Indicates whether the specified key is contained in the dictionary
-		/// </summary>
-		/// <param name="key">The key to look for</param>
-		/// <returns>True if the key is present in the dictionary, otherwise false</returns>
+
 		public bool ContainsKey(TKey key)
 			=> _innerDictionary.ContainsKey(key);
-		/// <summary>
-		/// Removes an item from the dictionary
-		/// </summary>
-		/// <param name="key">The key of the item to remove</param>
-		/// <returns>True if the item was removed, or false if not found</returns>
+		
 		public bool Remove(TKey key)
 		{
 			TValue value;
@@ -216,19 +156,10 @@ namespace DataStructure
 			}
 			return false;
 		}
-		/// <summary>
-		/// Attempts to retrieve the value for the specified key
-		/// </summary>
-		/// <param name="key">The key to look up</param>
-		/// <param name="value">The value to return</param>
-		/// <returns>True if the key is present, otherwise false</returns>
+		
 		public bool TryGetValue(TKey key, out TValue value)
 			=> _innerDictionary.TryGetValue(key, out value);
-		/// <summary>
-		/// Gets or sets the value at the specified key
-		/// </summary>
-		/// <param name="key">The key to look up</param>
-		/// <returns>The value</returns>
+	
 		public TValue this[TKey key] {
 			get =>_innerDictionary[key];
 			set {
@@ -245,15 +176,10 @@ namespace DataStructure
 				}
 			}
 		}
-		/// <summary>
-		/// Indicates the keys in this dictionary
-		/// </summary>
+		
 		public ICollection<TKey> Keys
 			=> new KeysCollection(this);
-		/// <summary>
-		/// Indicates the value in this dictionary
-		/// </summary>
-		public ICollection<TValue> Values
+				public ICollection<TValue> Values
 			=> new ValuesCollection(this);
 	}
     partial class O_Dictionary<TKey,TValue>
@@ -322,10 +248,7 @@ namespace DataStructure
 	}
     partial class O_Dictionary<TKey, TValue> : IList<KeyValuePair<TKey, TValue>>
 	{
-		/// <summary>
-		/// Removes the item at the specified index
-		/// </summary>
-		/// <param name="index">The index of the item to remove</param>
+		
 		public void RemoveAt(int index)
 		{
 			var key = _innerList[index].Key;
@@ -463,11 +386,17 @@ namespace DataStructure
         
         public void OnAfterDeserialize()
         {
-           int count;
-            // if(keys == null || values ==null)
-            //     count = 0;
-            // else
-            count = Math.Min(keys.Length, values.Length);
+            int count;
+            if(keys == null || values ==null)
+            {
+                Debug.Log(" no keys or vlaues");
+                count = 0;
+            }
+            else
+            {
+                count = Math.Min(keys.Length, values.Length);
+                Debug.Log("min length : "+count);
+            }
             dict = new O_Dictionary<Tkey, Tvalue>(count);
             for (var i = 0; i < count; ++i)
             {
@@ -540,28 +469,28 @@ namespace DataStructure
     [Serializable]
     public class BookInfoDict : SDictionary<int,BookInfo>
     {
-        public BookInfoDict(O_Dictionary<int,BookInfo> dictionary) : base(dictionary) {}
+        public BookInfoDict(O_Dictionary<int,BookInfo> dictionary) : base(dictionary) {Debug.Log("Im book info");}
     }
     [Serializable]
-    public class MapInfoDict : SDictionary<int,MapInfo>
+    public class MapInfoDict : SDictionary<int,MapData_build>
     {
-        public MapInfoDict(O_Dictionary<int,MapInfo> dictionary) : base(dictionary) {}
+        public MapInfoDict(O_Dictionary<int,MapData_build> dictionary) : base(dictionary) {Debug.Log("Im mapinfo");}
     }
     [Serializable]
     public class PlanetInfoDict : SDictionary<int,MapInfoDict>
     {
-        public PlanetInfoDict(O_Dictionary<int,MapInfoDict> dictionary) : base(dictionary) {}
+        public PlanetInfoDict(O_Dictionary<int,MapInfoDict> dictionary) : base(dictionary) {Debug.Log("im planet info");}
     }
 
     [Serializable]
     public class ItemInfoDict: SDictionary<int,ItemInfo>
     {
-        public ItemInfoDict(O_Dictionary<int,ItemInfo> dictionary) : base(dictionary){}  
+        public ItemInfoDict(O_Dictionary<int,ItemInfo> dictionary) : base(dictionary){Debug.Log("im item info");}  
     }
     [Serializable]
     public class QuestInfoDict: SDictionary<int,QuestInfo>
     {
-        public QuestInfoDict(O_Dictionary<int,QuestInfo> dictionary) : base(dictionary){}
+        public QuestInfoDict(O_Dictionary<int,QuestInfo> dictionary) : base(dictionary){Debug.Log("im quest info");}
     }
 
     [Serializable]
@@ -622,21 +551,22 @@ namespace DataStructure
             return this.count;
         }
     }
-
-    public struct BuildInfo
+    [Serializable]
+    public class BuildInfo
     {
-        public int index; // build item index
-        public int time; // built time;
-        public int level;
+        public int I; // build item index
+        public int T; // built time;
+        public int L;
 
         public BuildInfo(int index = 0, int time = 0)
         {
-            this.index = index;
-            this.time = time;
-            this.level = 0;
+            this.I = index;
+            this.T = time;
+            this.L = 0;
         }
     }
-    public struct Row<T>
+    [Serializable]
+    public class Row<T>
     {
         [SerializeField]
         public T[] x;
@@ -647,39 +577,63 @@ namespace DataStructure
         }
     }
     [Serializable]
-    public struct MapData<T>
+    public class Row_build : Row<BuildInfo>
+    {
+        public Row_build(int x) : base(x)
+        {}
+    }
+    [Serializable]
+    public class MapData<T>
     {  
         public int x_length;
         public int z_length;
         [SerializeField]
-        public Row<T>[] z;
+        //public Row<T>[] z;
+        public Row_build[] z;
 
+        // public MapData(int x, int z)
+        // {
+        //     this.z = new Row<T>[z];
+        //     for(int i = 0; i<z; i++)
+        //     {
+        //         this.z[i] = new Row<T>(x);
+        //     }
+        //     x_length = x;
+        //     z_length = z;
+        // }
         public MapData(int x, int z)
         {
-            this.z = new Row<T>[z];
+            this.z = new Row_build[z];
             for(int i = 0; i<z; i++)
             {
-                this.z[i] = new Row<T>(x);
+                this.z[i] = new Row_build(x);
             }
-            x_length = x;
-            z_length = z;
+            this.x_length = x;
+            this.z_length = z;
         }
     }
     [Serializable]
-    public struct MapInfo
+    public class MapData_build : MapData<BuildInfo>
     {
-        public int x_length;
-        public int z_length;
-        public MapData<BuildInfo> data;
-
-        public MapInfo(MapData<BuildInfo> data)
-        {
-            this.data = data;
-            this.x_length = data.x_length;
-            this.z_length = data.z_length;
-
-        }
+        public MapData_build(int x, int z) : base(x, z)
+        {}
     }
+    //[Serializable]
+    // public struct MapInfo
+    // {
+    //     public int x_length;
+    //     public int z_length;
+    //     [SerializeField]
+    //     public MapData<BuildInfo> data;
+
+    //     public MapInfo(MapData<BuildInfo> data)
+    //     {
+    //         this.data = data;
+    //         this.x_length = data.x_length;
+    //         this.z_length = data.z_length;
+
+    //     }
+    // }
 
     [Serializable]
     public struct Achievement
@@ -735,6 +689,7 @@ namespace DataStructure
         public Achievement achievement;
         // [SerializeField]
         public BookInfoDict book;
+        [SerializeField]
         public PlanetInfoDict planet;
         public ItemInfoDict item_normal;
         public ItemInfoDict item_build;
